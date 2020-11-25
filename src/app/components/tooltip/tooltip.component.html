@@ -1,0 +1,12 @@
+<div>
+  <button  mat-icon-button [disableRipple]="disableRipple" [color]="color" #tooltip="matTooltip"
+  (mouseenter)="$event.stopImmediatePropagation()"
+  (mouseleave)="$event.stopImmediatePropagation()"
+  (click)="tooltip.toggle($event)"
+  [matTooltip]="textContent"
+  [matTooltipPosition]="position"
+  aria-tooltip="button">
+  <ng-content></ng-content>
+</button>
+
+</div>

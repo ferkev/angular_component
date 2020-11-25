@@ -1,12 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { MatIconModule } from '@angular/material/icon';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        MatIconModule
+      ],
       declarations: [
         AppComponent
       ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
   });
 
@@ -19,13 +25,9 @@ describe('AppComponent', () => {
   it(`should have as title 'angularlibcomponent'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
+    const icon = fixture.debugElement.nativeElement.querySelector('mat-icon');
     expect(app.title).toEqual('angularlibcomponent');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angularlibcomponent app is running!');
+    expect(icon).toBeDefined();
+    expect(icon.innerHTML).toEqual(' info ');
   });
 });
